@@ -21,16 +21,16 @@ jobs:
           # Build the Docker image from the root folder
           docker build -t dockerize:app .
           # Tag the image with the registry
-          docker tag dockerize:app 20.115.47.23:5000/dockerize1:app1
+          docker tag dockerize:app 172.17.0.1:5000/dockerize1:app1
           # Log in to the Docker registry with username and password
-          docker login --username tkxel --password tkxel1234 20.115.47.23:5000
+          docker login --username tkxel --password tkxel1234 172.17.0.1:5000
           # Push the image to the registry
-          docker push 20.115.47.23:5000/dockerize1:app1
+          docker push 172.17.0.1:5000/dockerize1:app1
           # Check the image catalog in the Docker registry
           echo "Image Catalog:"
-          curl -X GET http://20.115.47.23:5000/v2/_catalog
+          curl -X GET http://172.17.0.1:5000/v2/_catalog
           # List tags for the 'dockerize1' repository
           echo "Tags for 'dockerize1' repository:"
-          curl -X GET http://20.115.47.23:5000/v2/dockerize1/tags/list
+          curl -X GET http://172.17.0.1:5000/v2/dockerize1/tags/list
 
 
